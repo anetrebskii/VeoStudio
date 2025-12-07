@@ -79,7 +79,7 @@ jobs:
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
         uses: w9jds/firebase-action@master
         with:
-          args: deploy
+          args: deploy --project veostudio-305df
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
@@ -87,6 +87,6 @@ jobs:
         if: github.event_name == 'pull_request'
         uses: w9jds/firebase-action@master
         with:
-          args: hosting:channel:deploy pr-${{ github.event.number }}
+          args: hosting:channel:deploy pr-${{ github.event.number }} --project veostudio-305df
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
