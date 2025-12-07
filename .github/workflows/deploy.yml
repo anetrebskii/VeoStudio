@@ -80,7 +80,7 @@ jobs:
 
       - name: Deploy to Firebase
         if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-        run: firebase deploy --only hosting,functions,firestore:rules,storage --project veostudio-305df --non-interactive
+        run: firebase deploy --only hosting,functions,firestore:rules,storage --project veostudio-305df --non-interactive --force
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
 
