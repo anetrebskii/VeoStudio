@@ -1,0 +1,40 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is authenticated
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+
+    // Helper function to check if user owns the document
+    function isOwner(userId) {
+      return isAuthenticated() && request.auth.uid == userId;
+    }
+
+    // Users collection - users can only read/write their own data
+    match /users/{userId} {
+      allow read: if isOwner(userId);
+      allow create: if isOwner(userId);
+      allow update: if isOwner(userId) &&
+                      // Only allow updating specific fields
+                      request.resource.data.diff(resource.data).affectedKeys()
+                        .hasOnly(['veoApiKey', 'updatedAt']);
+      allow delete: if false; // Prevent deletion
+    }
+
+    // Video generations collection - users can only access their own generations
+    match /generations/{generationId} {
+      allow read: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow create: if isAuthenticated() && request.resource.data.userId == request.auth.uid;
+      allow update: if isAuthenticated() && resource.data.userId == request.auth.uid;
+      allow delete: if isAuthenticated() && resource.data.userId == request.auth.uid;
+    }
+
+    // Usage tracking - users can only read their own usage
+    match /usage/{userId} {
+      allow read: if isOwner(userId);
+      allow write: if false; // Only backend can write
+    }
+  }
+}

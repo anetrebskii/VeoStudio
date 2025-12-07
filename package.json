@@ -1,0 +1,29 @@
+{
+  "name": "video-generator",
+  "version": "1.0.0",
+  "description": "Video generation application using Google Veo 3",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "functions"
+  ],
+  "scripts": {
+    "setup": "pnpm install && cd frontend && pnpm install && cd ../functions && pnpm install",
+    "firebase": "firebase",
+    "dev": "firebase emulators:start",
+    "dev:firebase": "firebase emulators:start",
+    "dev:frontend": "cd frontend && pnpm dev",
+    "dev:functions": "cd functions && pnpm dev",
+    "build:frontend": "cd frontend && pnpm build",
+    "build:functions": "cd functions && pnpm build",
+    "deploy": "firebase deploy",
+    "deploy:functions": "firebase deploy --only functions",
+    "deploy:hosting": "firebase deploy --only hosting"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "devDependencies": {
+    "firebase-tools": "^13.35.1"
+  }
+}
