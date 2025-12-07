@@ -20,11 +20,9 @@ dist/
 .env.production.local
 
 # Firebase
-.firebaserc
 firebase-debug.log
 firestore-debug.log
 ui-debug.log
-storage.rules
 
 # Logs
 npm-debug.log*
