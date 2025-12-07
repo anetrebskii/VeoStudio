@@ -8,6 +8,7 @@ admin.initializeApp();
 
 export const generateVideoFunction = onCall(
   {
+    region: 'europe-west10',
     timeoutSeconds: 540,
     memory: '1GiB',
   },
