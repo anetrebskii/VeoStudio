@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { SignInForm } from '@/components/Auth/SignInForm';
 import { SignUpForm } from '@/components/Auth/SignUpForm';
 import { Video } from 'lucide-react';

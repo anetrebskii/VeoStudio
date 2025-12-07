@@ -1,4 +1,3 @@
-import React from 'react';
 import { PricingInfo } from '@/types';
 import { formatCurrency } from '@/utils/pricing';
 import { DollarSign } from 'lucide-react';

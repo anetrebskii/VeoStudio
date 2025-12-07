@@ -1,4 +1,3 @@
-import React from 'react';
 import { VideoGeneration, MODEL_LABELS } from '@/types';
 import { formatCurrency } from '@/utils/pricing';
 import { format } from 'date-fns';

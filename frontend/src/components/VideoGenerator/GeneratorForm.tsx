@@ -3,10 +3,7 @@ import { useForm } from 'react-hook-form';
 import {
   VeoModel,
   GenerationMode,
-  AspectRatio,
-  Resolution,
   Duration,
-  PersonGeneration,
   VideoGenerationRequest,
   MODEL_LABELS,
   ASPECT_RATIOS,
@@ -33,7 +30,6 @@ export function GeneratorForm({ onSubmit, loading }: GeneratorFormProps) {
     'veo-3.1-fast-generate-preview'
   );
   const [selectedDuration, setSelectedDuration] = useState<Duration>(4);
-  const [selectedMode, setSelectedMode] = useState<GenerationMode>('text-to-video');
   const [initialImageFile, setInitialImageFile] = useState<File | null>(null);
   const [finalImageFile, setFinalImageFile] = useState<File | null>(null);
   const [referenceImageFiles, setReferenceImageFiles] = useState<File[]>([]);
@@ -63,8 +59,7 @@ export function GeneratorForm({ onSubmit, loading }: GeneratorFormProps) {
   React.useEffect(() => {
     setSelectedModel(watchedModel);
     setSelectedDuration(watchedDuration);
-    setSelectedMode(watchedMode);
-  }, [watchedModel, watchedDuration, watchedMode]);
+  }, [watchedModel, watchedDuration]);
 
   // Auto-adjust resolution if 1080p is selected but duration is not 8s
   React.useEffect(() => {

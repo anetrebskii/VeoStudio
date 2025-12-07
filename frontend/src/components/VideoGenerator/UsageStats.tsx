@@ -1,4 +1,3 @@
-import React from 'react';
 import { UserUsage, MODEL_LABELS } from '@/types';
 import { formatCurrency } from '@/utils/pricing';
 import { BarChart3, DollarSign, Video } from 'lucide-react';
