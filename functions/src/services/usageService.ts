@@ -17,12 +17,14 @@ export async function updateUserUsage(
         totalGenerations: 1,
         totalSpent: cost,
         generationsByModel: {
+          'veo-2.0-generate-001': model === 'veo-2.0-generate-001' ? 1 : 0,
           'veo-3.0-generate-001': model === 'veo-3.0-generate-001' ? 1 : 0,
           'veo-3.0-fast-generate-001': model === 'veo-3.0-fast-generate-001' ? 1 : 0,
           'veo-3.1-generate-preview': model === 'veo-3.1-generate-preview' ? 1 : 0,
           'veo-3.1-fast-generate-preview': model === 'veo-3.1-fast-generate-preview' ? 1 : 0,
         },
         spentByModel: {
+          'veo-2.0-generate-001': model === 'veo-2.0-generate-001' ? cost : 0,
           'veo-3.0-generate-001': model === 'veo-3.0-generate-001' ? cost : 0,
           'veo-3.0-fast-generate-001': model === 'veo-3.0-fast-generate-001' ? cost : 0,
           'veo-3.1-generate-preview': model === 'veo-3.1-generate-preview' ? cost : 0,
